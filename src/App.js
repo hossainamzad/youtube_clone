@@ -20,10 +20,13 @@ class App extends Component {
     this.onSelectedVideo = this.onSelectedVideo.bind(this)
   }
   componentDidMount(){
+    this.videoSearch('surfboards')
+  }
+  videoSearch(term){
     YTSearch(
       {
         key: API_KEY,
-        term: 'surfboards'
+        term: term
       },
       (data)=> {
         console.log(data)
@@ -48,7 +51,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Searchbar />
+        <Searchbar onVideoSearch = { (term) => this.videoSearch(term)}/>
         <VideoDetail video = {this.state.selectedVideo}/>
         <VideoList onSelectedVideo={this.onSelectedVideo} videos={this.state.videos}/>
       </div>

@@ -16,6 +16,7 @@ class Searchbar extends Component {
     this.setState({
       term: event.target.value
     })
+    this.props.onVideoSearch(this.state.term)
   }
   render(){
     return(
